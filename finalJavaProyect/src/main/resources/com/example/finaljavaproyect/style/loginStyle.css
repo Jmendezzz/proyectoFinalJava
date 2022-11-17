@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto+Mono:wght@300&display=swap');
+*{
+    fx-font-family: 'Alfa Slab One', cursive;
+}
+.background{
+    -fx-background-color: linear-gradient(to top, #23272b , #2f3539);
+    fx-font-family: 'Alfa Slab One', cursive;
+
+
+}
+.background TextField{
+    -fx-background-color : transparent;
+    -fx-border-radius: 10px;
+    -fx-border-color: transparent  transparent #cccc transparent;
+    -fx-text-fill: white;
+
+}
+
+.background TextField:focus{
+    -fx-background-color : transparent;
+    -fx-text-fill: white;
+
+}
+
+.background Button{
+    -fx-background-color : transparent;
+    -fx-border-radius:10px;
+
+    -fx-border-color : #ccc;
+    -fx-text-fill: white;
+    -fx-font-size:14px;
+
+}
+.background Button:hover{
+    -fx-background-color : white;
+    -fx-cursor:hand;
+    -fx-border-radius:10px;
+    -fx-text-fill: #2f3539;
+
+}
+#registerButton{
+    -fx-border-color: transparent  transparent #cccc transparent;
+}
+#registerButton:hover{
+    -fx-cursor:hand;
+    -fx-background-color : transparent;
+    -fx-text-fill: white;
+    -fx-font-weight:900;
+
+
+}
+
