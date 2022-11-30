@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<HBox fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="710.0" minWidth="1400.0" prefHeight="710.0" prefWidth="1400.0" styleClass="background" fx:controller="com.example.finaljavaproyect.controller.RegisterController" stylesheets="@../style/loginStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="cont" alignment="TOP_CENTER" minHeight="600.0" minWidth="500.0" prefHeight="620.0" prefWidth="635.0">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTRARSE" wrappingWidth="383.34375">
+               <font>
+                  <Font name="Ebrima" size="64.0" />
+               </font>
+            </Text>
+            <VBox alignment="CENTER" prefHeight="364.0" prefWidth="398.0">
+               <VBox.margin>
+                  <Insets bottom="90.0" left="100.0" right="100.0" top="80.0" />
+               </VBox.margin>
+               <children>
+                  <TextField fx:id="nameField" maxWidth="354.0" minWidth="200.0" prefHeight="33.0" prefWidth="354.0" promptText="Nombre completo">
+                     <padding>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="idField" maxWidth="354.0" minWidth="200.0" prefHeight="33.0" prefWidth="354.0" promptText="No. identificación">
+                     <padding>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="cellphoneNumberField" maxWidth="354.0" minWidth="200.0" prefHeight="33.0" prefWidth="354.0" promptText="Número telefonico">
+                     <padding>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="emailField" maxWidth="354.0" minWidth="200.0" prefHeight="33.0" prefWidth="354.0" promptText="Correo Electronico">
+                     <padding>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <PasswordField fx:id="passwordField" maxWidth="354.0" minWidth="200.0" prefHeight="33.0" prefWidth="354.0" promptText="Contraseña">
+                     <VBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <PasswordField fx:id="passwordConfirmedField" maxWidth="354.0" minWidth="300.0" prefHeight="33.0" prefWidth="354.0" promptText="Confirma tu contraseña">
+                     <VBox.margin>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerUserHandler" text="Registrarse">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+         <HBox.margin>
+            <Insets top="90.0" />
+         </HBox.margin>
+      </VBox>
+      <ImageView fitHeight="711.0" fitWidth="803.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/registerImage.png" />
+         </image>
+      </ImageView>
+   </children>
+</HBox>

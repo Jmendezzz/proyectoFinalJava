@@ -1,0 +1,21 @@
+.nav-bar{
+
+    -fx-background-color:  linear-gradient(to top, #23272b , #2f3539);
+}
+.tab-pane Button{
+
+    -fx-background-color : transparent;
+    -fx-border-radius:10px;
+    -fx-border-color : #23272b;
+    -fx-text-fill: #23272b;
+    -fx-font-size:14px;
+
+}
+.tab-pane Button:hover{
+    -fx-background-color : #23272b;
+    -fx-cursor:hand;
+    -fx-border-radius:10px;
+    -fx-text-fill: #2f3539;
+    -fx-text-fill: white;
+}
+

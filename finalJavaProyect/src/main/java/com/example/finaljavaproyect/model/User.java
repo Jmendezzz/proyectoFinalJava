@@ -1,16 +1,44 @@
 package com.example.finaljavaproyect.model;
 
+import java.util.ArrayList;
+
 public class User {
     private String name;
     private String email;
     private String id;
     private String cellphoneNumber;
+    private UserCredentials userCredentials;
+    private Boolean loginStatus = false;
 
-    public User(String name,  String email, String id, String cellphoneNumber) {
+    private ArrayList<Publication> publications = new ArrayList<>();
+
+    private Cart cart;
+
+    public User(String name,  String email, String id, String cellphoneNumber, UserCredentials userCredentials) {
         this.name = name;
         this.email = email;
         this.id = id;
         this.cellphoneNumber = cellphoneNumber;
+        this.userCredentials = userCredentials;
+    }
+    public User(){
+
+    }
+
+    public UserCredentials getUserCredentials() {
+        return userCredentials;
+    }
+
+    public void setUserCredentials(UserCredentials userCredentials) {
+        this.userCredentials = userCredentials;
+    }
+
+    public Boolean getLoginStatus() {
+        return loginStatus;
+    }
+
+    public void setLoginStatus(Boolean loginStatus) {
+        this.loginStatus = loginStatus;
     }
 
     public String getName() {
@@ -43,5 +71,21 @@ public class User {
 
     public void setCellphoneNumber(String cellphoneNumber) {
         this.cellphoneNumber = cellphoneNumber;
+    }
+
+    public ArrayList<Publication> getPublications() {
+        return publications;
+    }
+
+    public void setPublications(ArrayList<Publication> publications) {
+        this.publications = publications;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 }

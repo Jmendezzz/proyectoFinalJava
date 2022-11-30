@@ -9,8 +9,9 @@ module com.example.finaljavaproyect {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens com.example.finaljavaproyect to javafx.fxml;
+
     exports com.example.finaljavaproyect;
+    opens com.example.finaljavaproyect to javafx.fxml;
     exports com.example.finaljavaproyect.controller;
     opens com.example.finaljavaproyect.controller to javafx.fxml;
 }

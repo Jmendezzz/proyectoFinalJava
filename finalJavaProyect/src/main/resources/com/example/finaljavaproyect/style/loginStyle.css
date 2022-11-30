@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto+Mono:wght@300&display=swap');
 *{
     fx-font-family: 'Alfa Slab One', cursive;
 }
@@ -21,11 +20,22 @@
     -fx-text-fill: white;
 
 }
+.background PasswordField{
+    -fx-background-color : transparent;
+    -fx-border-radius: 10px;
+    -fx-border-color: transparent  transparent #cccc transparent;
+    -fx-text-fill: white;
+
+}
+.background PasswordField:focus{
+    -fx-background-color : transparent;
+    -fx-text-fill: white;
+
+}
 
 .background Button{
     -fx-background-color : transparent;
     -fx-border-radius:10px;
-
     -fx-border-color : #ccc;
     -fx-text-fill: white;
     -fx-font-size:14px;
@@ -38,15 +48,18 @@
     -fx-text-fill: #2f3539;
 
 }
-#registerButton{
+#registerButtonLoginScreen{
     -fx-border-color: transparent  transparent #cccc transparent;
 }
-#registerButton:hover{
+#registerButtonLoginScreen:hover{
     -fx-cursor:hand;
     -fx-background-color : transparent;
     -fx-text-fill: white;
     -fx-font-weight:900;
 
 
+}
+#imageLogin{
+    -fx-background-image: url("file:images/login-image.jpg");
 }
 
