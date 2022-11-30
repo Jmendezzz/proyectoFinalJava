@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,8 +26,18 @@ public class PublicationItemController implements Initializable {
     private Text publicationTitle;
 
     public void setData (Publication publication){
-        Image imagePublication = new Image(getClass().getResourceAsStream(publication.getUrlImage()));
-        publicationImage.setImage(imagePublication);
+        try {
+            Image image = new Image(publication.getUrlImage());
+            publicationImage.setImage(image);
+
+        }catch(IllegalArgumentException err){
+            File fileImageNotFound= new File("src/main/resources/com/example/finaljavaproyect/images/imageNotFound.png");
+            Image img = new Image(fileImageNotFound.toURI().toString());
+            publicationImage.setImage(img);
+
+        }
+
+
         publicationTitle.setText(publication.getTitle());
         publicationDescription.setText(publication.getDescription());
 

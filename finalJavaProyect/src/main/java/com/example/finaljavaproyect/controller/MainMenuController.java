@@ -1,5 +1,6 @@
 package com.example.finaljavaproyect.controller;
 
+import com.example.finaljavaproyect.PublicationViewHelper;
 import com.example.finaljavaproyect.SwitchScene;
 import com.example.finaljavaproyect.model.Publication;
 import com.example.finaljavaproyect.model.User;
@@ -12,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.io.File;
@@ -57,6 +59,7 @@ public class MainMenuController implements Initializable {
 
         applyButtonImages();
         welcomeMainMenuMessage();
+        loadPublications();
 
     }
 
@@ -102,11 +105,26 @@ public class MainMenuController implements Initializable {
     void loadPublications (){
 
         mfc.marketcol.getUserService().getUsers().stream().forEach((user)->{
+            System.out.println("+++*****"+user.getName());
 
             user.getPublications().stream().forEach((publication)->{
+                        System.out.println("*****"+ publication.getTitle());
 
-                        FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource(""));
+
+                        try {
+                            PublicationViewHelper publicationViewHelper = new PublicationViewHelper();
+                            publicationViewHelper.setLocation();
+
+
+                            VBox vBox = publicationViewHelper.fxmlLoader.load();
+
+                            PublicationItemController publicationItemController = publicationViewHelper.fxmlLoader.getController();
+                            publicationItemController.setData(publication);
+                            publicationsLayout.getChildren().add(vBox);
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
 
 
                     }

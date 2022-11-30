@@ -25,7 +25,7 @@ public class Persistence {
     static ArrayList<Publication> loadPublications(User user, String linea){
         ArrayList<Publication> publications = new ArrayList<>();
         System.out.println(linea);
-        String[] publicationContent = linea.split("^");
+        String[] publicationContent = linea.split("\\^");
         if(publicationContent.length>0){
             for(int i = 0; i<publicationContent.length;i++){
                 Publication publication = new Publication();
@@ -33,6 +33,7 @@ public class Persistence {
                 publication.setPrice(Integer.parseInt(publicationContent[i].split("<>")[0]));
                 publication.setAmount(Integer.parseInt(publicationContent[i].split("<>")[1]));
                 publication.setTitle(publicationContent[i].split("<>")[2]);
+
                 publication.setDescription(publicationContent[i].split("<>")[3]);
                 publication.setUrlImage(publicationContent[i].split("<>")[4]);
                 publications.add(publication);
