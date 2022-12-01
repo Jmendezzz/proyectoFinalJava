@@ -5,6 +5,7 @@ import com.example.finaljavaproyect.SwitchScene;
 import com.example.finaljavaproyect.model.Publication;
 import com.example.finaljavaproyect.model.User;
 import com.example.finaljavaproyect.threads.MyProfileThread;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.CompletableFuture;
 
 public class MainMenuController implements Initializable {
 
@@ -59,7 +61,7 @@ public class MainMenuController implements Initializable {
 
         applyButtonImages();
         welcomeMainMenuMessage();
-        loadPublications();
+        Platform.runLater(()->loadPublications());
 
     }
 

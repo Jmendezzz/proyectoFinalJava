@@ -9,6 +9,7 @@ import com.example.finaljavaproyect.validations.RegisterValidation;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.CompletableFuture;
 
 public class UserImpl implements UserService{
     ArrayList<User> users;
@@ -31,7 +32,15 @@ public class UserImpl implements UserService{
         }
 
     }
+  /*  public void ejemplo() throws RegisterException {
+        CompletableFuture.supplyAsync(()->getUsers()).thenApply(userList->{
+            userList.stream().forEach(user -> System.out.println(user.getName()));
 
+
+            return null;
+        });
+    }
+*/
 
     @Override
     public void addUser(User user) {
