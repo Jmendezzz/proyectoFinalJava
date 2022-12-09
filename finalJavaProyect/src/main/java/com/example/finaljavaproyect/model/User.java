@@ -10,7 +10,7 @@ public class User {
     private UserCredentials userCredentials;
     private Boolean loginStatus = false;
 
-    private ArrayList<Publication> publications = new ArrayList<>();
+    //private ArrayList<Publication> publications = new ArrayList<>();
 
     private Cart cart;
 
@@ -73,13 +73,6 @@ public class User {
         this.cellphoneNumber = cellphoneNumber;
     }
 
-    public ArrayList<Publication> getPublications() {
-        return publications;
-    }
-
-    public void setPublications(ArrayList<Publication> publications) {
-        this.publications = publications;
-    }
 
     public Cart getCart() {
         return cart;

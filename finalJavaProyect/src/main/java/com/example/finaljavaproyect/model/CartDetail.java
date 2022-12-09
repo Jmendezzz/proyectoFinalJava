@@ -9,6 +9,9 @@ public class CartDetail {
         this.wishPublication = whishPublication;
         this.amount = amount;
     }
+    public  CartDetail(){
+
+    }
 
     public Publication getWishPublication() {
         return wishPublication;

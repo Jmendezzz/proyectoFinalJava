@@ -1,33 +1,34 @@
 package com.example.finaljavaproyect.controller;
-
-import com.example.finaljavaproyect.SwitchScene;
+import com.example.finaljavaproyect.*;
 import com.example.finaljavaproyect.exceptions.EditUserException;
 import com.example.finaljavaproyect.exceptions.InputException;
 import com.example.finaljavaproyect.exceptions.RegisterException;
 import com.example.finaljavaproyect.helpers.alerts.AlertMessage;
+import com.example.finaljavaproyect.model.CartDetail;
 import com.example.finaljavaproyect.model.Publication;
+import com.example.finaljavaproyect.model.Sale;
 import com.example.finaljavaproyect.model.User;
-import com.example.finaljavaproyect.threads.MyProfileThread;
 import com.example.finaljavaproyect.validations.EditUserValidation;
 import com.example.finaljavaproyect.validations.InputValidation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.CompletableFuture;
 
-public class MyProfileController implements Initializable , Runnable {
+
+public class MyProfileController implements Initializable, Runnable {
 
     ModelFactoryController mfc = ModelFactoryController.getInstance();
 
@@ -72,6 +73,10 @@ public class MyProfileController implements Initializable , Runnable {
 
     @FXML
     private TextField emailField;
+
+    @FXML
+    private GridPane myPublicationsLayout;
+
     @Override
     public void run() {
         initalizeMyInfoFields();
@@ -84,6 +89,9 @@ public class MyProfileController implements Initializable , Runnable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         run();
         applyButtonImages();
+        initializeChoiceBoxOptions();
+        loadMyPublications();
+        printMySales();
 
 
     }
@@ -153,7 +161,7 @@ public class MyProfileController implements Initializable , Runnable {
                                 userActive.getUserCredentials().getPassword()
                         );
             } else {
-                editUserValidation.verifyPasswordToEdit(userActive,passwordField.getText()); // Verificar que la contraseña actual ingresada sea correcta y asi permitir el cambio a una nueva contraseña.
+                editUserValidation.verifyPasswordToEdit(userActive, passwordField.getText()); // Verificar que la contraseña actual ingresada sea correcta y asi permitir el cambio a una nueva contraseña.
                 mfc.marketcol.getUserService()
                         .editUser(userActive,
                                 fullNameField.getText(),
@@ -162,9 +170,9 @@ public class MyProfileController implements Initializable , Runnable {
                         );
 
             }
-        AlertMessage.informationMessage("Se han actualizado los datos");
+            AlertMessage.informationMessage("Se han actualizado los datos");
 
-        } catch (InputException | RegisterException  | EditUserException err) {
+        } catch (InputException | RegisterException | EditUserException err) {
             AlertMessage.errMessage(err.getMessage());
         }
     }
@@ -173,6 +181,58 @@ public class MyProfileController implements Initializable , Runnable {
         inputValidation.verifyEmptyInput(fullNameField.getText());
         inputValidation.verifyEmptyInput(cellphoneNumberField.getText());
     }
+
+    //My publications functions
+    @FXML
+    private VBox myPublicationsContainer;
+
+
+    final int[] columns = {0};
+    final int[] rows = {1};
+
+    void loadMyPublications(){
+        if(mfc.marketcol.getPublicationService().userPublications(userActive).size()>0){
+            mfc.marketcol.getPublicationService().userPublications(userActive).forEach(publication -> printPublications(publication));
+
+        }else{
+            NoPublicationsViewHelper noPublicationsViewHelper = new NoPublicationsViewHelper();
+
+            try{
+                myPublicationsContainer.getChildren().clear();
+                noPublicationsViewHelper.setLocation();
+                VBox vBox = noPublicationsViewHelper.fxmlLoader.load();
+                myPublicationsContainer.getChildren().add(vBox);
+
+
+            }catch ( IOException e){
+                System.out.println(e.getMessage());
+            }
+
+        }
+
+    }
+    void printPublications(Publication publication){
+        try {
+            MyPublicationViewHelper publicationViewHelper = new MyPublicationViewHelper();
+            publicationViewHelper.setLocation();
+
+            VBox vBox = publicationViewHelper.fxmlLoader.load();
+
+            MyPublicationItemController publicationItemController = publicationViewHelper.fxmlLoader.getController();
+            publicationItemController.setData(publication);
+            if (columns[0] == 2) {
+                columns[0] = 0;
+                rows[0]++;
+            }
+            myPublicationsLayout.add(vBox, columns[0]++, rows[0]);
+            GridPane.setMargin(vBox, new Insets(0, 300, 50, 30));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     @FXML
     private TextField publicationNameField;
 
@@ -191,13 +251,21 @@ public class MyProfileController implements Initializable , Runnable {
     @FXML
     private Button createPublicationButton;
 
+
+    @FXML
+    private ChoiceBox<String> categoryChoiceBox;
+
     @FXML
     private TextArea descriptionArticleField;
+
+    private String[] categoryOptions = {"Tecnologia", "Ropa", "Hogar", "Deportes", "Juegos"};
+
+    void initializeChoiceBoxOptions() {
+        categoryChoiceBox.getItems().addAll(categoryOptions);
+    }
+
+
     //Create a publication functions
-
-
-
-
 
     void verifyNoEmptyPublicationInputs() throws InputException {
         inputValidation.verifyEmptyInput(publicationNameField.getText());
@@ -205,36 +273,97 @@ public class MyProfileController implements Initializable , Runnable {
         inputValidation.verifyEmptyInput(avaibleAmountField.getText());
         inputValidation.verifyEmptyInput(articlePriceField.getText());
         inputValidation.verifyEmptyInput(descriptionArticleField.getText());
+        inputValidation.verifyEmptyInput(categoryChoiceBox.getValue());
 
     }
-    void verifyNumericalPublicationInputs() throws InputException{
+
+    void verifyNumericalPublicationInputs() throws InputException {
         inputValidation.verifyNumericalInput(articlePriceField.getText());
         inputValidation.verifyNumericalInput(avaibleAmountField.getText());
     }
 
     @FXML
-    void createPublicationHandler(){
-        try{
+    void createPublicationHandler() {
+        try {
             verifyNoEmptyPublicationInputs();
             verifyNumericalPublicationInputs();
-            mfc.marketcol.getUserService()
-                    .addPublicationToUser(
+            mfc.marketcol.getPublicationService().addPublication(
+                    new Publication(
                             userActive,
-                            new Publication(
-                                    userActive,
-                                    Integer.parseInt(articlePriceField.getText()) ,
-                                    Integer.parseInt(avaibleAmountField.getText()),
-                                    publicationNameField.getText(),
-                                    descriptionArticleField.getText(),
-                                    urlImageField.getText()
-                                    )
-                    );
+                            Integer.parseInt(articlePriceField.getText()),
+                            Integer.parseInt(avaibleAmountField.getText()),
+                            publicationNameField.getText(),
+                            descriptionArticleField.getText(),
+                            categoryChoiceBox.getValue(),
+                            urlImageField.getText()
+                    )
 
-        }catch (InputException err){
+            );
+            AlertMessage.informationMessage("Publicacion creada correctamente.");
+
+        } catch (InputException err) {
             AlertMessage.errMessage(err.getMessage());
         }
     }
+    //My Sales functions
+    @FXML
+    private VBox mySalesContainer;
 
+    @FXML
+    private GridPane mySalesLayout;
+    final int[] columnsSales = {0};
+    final int[] rowsSales = {1};
+
+    void printSale(Sale sale) {
+
+        try {
+            SaleItemViewHelper saleItemViewHelper = new SaleItemViewHelper();
+            saleItemViewHelper.setLocation();
+
+            HBox hBox = saleItemViewHelper.fxmlLoader.load();
+
+            MySaleItemController mySaleItemController = saleItemViewHelper.fxmlLoader.getController();
+            mySaleItemController.setData(sale);
+            if (columnsSales[0] == 1) {
+                columnsSales[0] = 0;
+                rowsSales[0]++;
+            }
+            mySalesLayout.add(hBox, columnsSales[0]++, rowsSales[0]);
+            GridPane.setMargin(hBox, new Insets(0, 0, 50, 0));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    void printMySales(){
+        if( mfc.marketcol.getSaleService().getUserSales(userActive).size()>0){
+            mfc.marketcol.getSaleService().getUserSales(userActive)
+                    .stream()
+                    .forEach(sale -> printSale(sale));
+
+        }else {
+            NoSalesViewHelper noSalesViewHelper = new NoSalesViewHelper();
+
+            try{
+                mySalesContainer.getChildren().clear();
+                noSalesViewHelper.setLocation();
+                VBox vBox = noSalesViewHelper.fxmlLoader.load();
+                mySalesContainer.getChildren().add(vBox);
+
+
+            }catch ( IOException e){
+                System.out.println(e.getMessage());
+            }
+
+
+        }
+
+    }
+    @FXML
+    void switchToMainMenuHandler(ActionEvent e) throws IOException {
+        SwitchScene.switchToMainMenu(e);
+    }
 
 
 }

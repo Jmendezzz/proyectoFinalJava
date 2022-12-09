@@ -9,4 +9,6 @@ public interface LoginService {
 
     void verifyLoginCredential(String email, String password, ArrayList<User> userList) throws LoginException;
     User userLoginActive();
+
+
 }

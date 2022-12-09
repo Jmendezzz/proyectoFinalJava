@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="cartItemLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="141.0" prefWidth="1250.0" spacing="10.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finaljavaproyect.controller.MySaleItemController">
+   <children>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <VBox prefHeight="250.0" prefWidth="378.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="114.0" prefWidth="257.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Comprador" textAlignment="CENTER" wrappingWidth="180.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="114.0" prefWidth="232.0">
+               <children>
+                  <Text fx:id="buyerText" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="359.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <VBox prefHeight="250.0" prefWidth="365.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="114.0" prefWidth="87.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Producto" textAlignment="CENTER" wrappingWidth="79.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+            <VBox fx:id="ca" alignment="CENTER" prefHeight="114.0" prefWidth="90.0">
+               <children>
+                  <Text fx:id="productTitleText" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="335.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <VBox prefHeight="250.0" prefWidth="84.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="114.0" prefWidth="154.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cantidad" textAlignment="CENTER" wrappingWidth="121.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="114.0" prefWidth="232.0">
+               <children>
+                  <Text fx:id="amountBougthText" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="82.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <VBox prefHeight="250.0" prefWidth="286.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="114.0" prefWidth="154.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total" textAlignment="CENTER" wrappingWidth="121.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="114.0" prefWidth="232.0">
+               <children>
+                  <Text fx:id="salePriceText" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="274.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Separator prefWidth="200.0" />
+         </children>
+      </VBox>
+   </children>
+</HBox>

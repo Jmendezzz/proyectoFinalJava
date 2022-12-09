@@ -9,7 +9,7 @@ import com.example.finaljavaproyect.validations.RegisterValidation;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.CompletableFuture;
+
 
 public class UserImpl implements UserService{
     ArrayList<User> users;
@@ -32,20 +32,7 @@ public class UserImpl implements UserService{
         }
 
     }
-  /*  public void ejemplo() throws RegisterException {
-        CompletableFuture.supplyAsync(()->getUsers()).thenApply(userList->{
-            userList.stream().forEach(user -> System.out.println(user.getName()));
-
-
-            return null;
-        });
-    }
-*/
-
-    @Override
-    public void addUser(User user) {
-
-        users.add(user);
+    void saveUsers(){
         try{
             Persistence.saveUsers(users);
 
@@ -56,29 +43,37 @@ public class UserImpl implements UserService{
     }
 
     @Override
+    public void addUser(User user) {
+        users.add(user);
+        saveUsers();
+    }
+
+
+    @Override
     public void editUser(User user, String name, String cellphoneNumber, String password) throws RegisterException {
-        System.out.println(cellphoneNumber);
         registerValidation.verifyCellphoneNumberInput(cellphoneNumber);
         user.setName(name);
         user.setCellphoneNumber(cellphoneNumber);
         user.getUserCredentials().setPassword(password);
-        try{
-            Persistence.saveUsers(users);
 
-        }catch (IOException err){
-            System.out.println(err.getMessage());
-        }
+        saveUsers();
     }
 
-    @Override
+ /*   @Override
     public void addPublicationToUser(User user, Publication publication) {
         user.getPublications().add(publication);
-        try{
-            Persistence.saveUsers(users);
 
-        }catch (IOException err){
-            System.out.println(err.getMessage());
-        }
+        saveUsers();
 
+    }*/
+
+    @Override
+    public User getUserByEmail(String email) {
+        return users.stream().filter(user -> user.getEmail().equals(email))
+                .findFirst()
+                .orElse(null);
     }
+
+
 }
+

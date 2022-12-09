@@ -17,12 +17,6 @@ public class LoginImpl implements LoginService {
 
     @Override
     public void verifyLoginCredential(String email, String password, ArrayList<User> userList ) throws LoginException{
-        System.out.println(userList.size());
-
-        for (User user: userList){
-            System.out.println("work in loop");
-            System.out.println(user.getEmail());
-        }
 
         marketcol.getUserService().getUsers().stream()
                 .filter(user -> user.getUserCredentials().getEmail().equals(email)

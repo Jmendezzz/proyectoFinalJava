@@ -31,7 +31,12 @@ public class SwitchScene  {
         switchScene(e,"fxml/cart-view.fxml");
 
     }
-
+    public static void switchToMainMenu(ActionEvent e ) throws  IOException{
+        switchScene(e,"fxml/main-menu-view.fxml");
+    }
+    public static void switchToConfirmSaleScene(ActionEvent e) throws IOException{
+        switchScene(e,"fxml/confirm-sale-view.fxml");
+    }
 
     public static void switchScene(ActionEvent e, String resource) throws IOException {
         root = FXMLLoader.load(SwitchScene.class.getResource(resource));

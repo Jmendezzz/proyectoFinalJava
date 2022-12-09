@@ -1,21 +1,15 @@
 package com.example.finaljavaproyect.controller;
-
 import com.example.finaljavaproyect.SwitchScene;
 import com.example.finaljavaproyect.exceptions.LoginException;
 import com.example.finaljavaproyect.helpers.alerts.AlertMessage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.fxml.LoadException;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.concurrent.CompletableFuture;
+
 
 public class LoginController{
     ModelFactoryController mfc = ModelFactoryController.getInstance();

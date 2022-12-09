@@ -13,7 +13,9 @@ public interface UserService {
     void addUser(User user);
     void editUser(User user, String name, String cellphoneNumber,String password) throws RegisterException;
 
-    void addPublicationToUser(User user, Publication publication);
+    //void addPublicationToUser(User user, Publication publication);
+
+    User getUserByEmail(String email);
 
 
 

@@ -48,6 +48,7 @@ public class RegisterController {
     public void registerUserHandler (ActionEvent e){
 
         try{
+
             verifyNotEmptyInputs();
             verifyNumericalInputs();
             inputValidation.verifyEmailInput(emailField.getText());
@@ -76,9 +77,7 @@ public class RegisterController {
         inputValidation.verifyEmptyInput(idField.getText());
         inputValidation.verifyEmptyInput(cellphoneNumberField.getText());
         inputValidation.verifyEmptyInput(passwordField.getText());
-        inputValidation.verifyEmptyInput(passwordConfirmedField.getText()); // Revisar si puedo utilizar spread operator para recibir una lista de parametros indefinida
-
-
+        inputValidation.verifyEmptyInput(passwordConfirmedField.getText());
     }
     public void verifyNumericalInputs() throws InputException{
         inputValidation.verifyNumericalInput(cellphoneNumberField.getText());

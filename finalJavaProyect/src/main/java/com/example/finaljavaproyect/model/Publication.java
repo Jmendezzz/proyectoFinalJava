@@ -11,14 +11,17 @@ public class Publication {
     private String title;
 
     private String description;
+
+    private String category;
     private String urlImage;
 
-    public Publication(User user, int price, int amount, String title, String description,String urlImage) {
+    public Publication(User user, int price, int amount, String title, String description,String category, String urlImage) {
         this.user = user;
         this.price = price;
         this.amount = amount;
         this.title = title;
         this.description = description;
+        this.category = category;
         this.urlImage = urlImage;
     }
     public Publication(){
@@ -63,6 +66,14 @@ public class Publication {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getUrlImage() {

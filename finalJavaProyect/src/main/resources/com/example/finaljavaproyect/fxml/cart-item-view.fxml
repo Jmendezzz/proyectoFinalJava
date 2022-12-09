@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="cartItemLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="1001.0" spacing="10.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finaljavaproyect.controller.CartItemController">
+   <children>
+      <ImageView fx:id="imagePublication" fitHeight="251.0" fitWidth="252.0" pickOnBounds="true" />
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <VBox prefHeight="250.0" prefWidth="235.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="114.0" prefWidth="257.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Producto" textAlignment="CENTER" wrappingWidth="180.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="114.0" prefWidth="232.0">
+               <children>
+                  <Text fx:id="publicationTitlteText" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="246.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <VBox prefHeight="250.0" prefWidth="58.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="114.0" prefWidth="87.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cantidad " textAlignment="CENTER" wrappingWidth="79.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+            <VBox fx:id="ca" alignment="CENTER" prefHeight="114.0" prefWidth="90.0">
+               <children>
+                  <Text fx:id="amountWishPublicationText" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="45.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <VBox prefHeight="250.0" prefWidth="242.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="114.0" prefWidth="154.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Subtotal" textAlignment="CENTER" wrappingWidth="121.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="114.0" prefWidth="232.0">
+               <children>
+                  <Text fx:id="subtotalText" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="126.13671875">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <VBox prefHeight="250.0" prefWidth="165.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#deleteArticleButtonHandler" prefHeight="62.0" prefWidth="64.0" style="-fx-background-color: transparent;">
+               <VBox.margin>
+                  <Insets left="20.0" top="70.0" />
+               </VBox.margin>
+               <graphic>
+                  <ImageView fx:id="removeItemCartButton" fitHeight="89.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/removeArticleCart.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#decreaseButtonHandler" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="43.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/minusCartItem.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addButtonHandler" prefHeight="58.0" prefWidth="63.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="46.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/addCartItem.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

@@ -3,12 +3,19 @@ package com.example.finaljavaproyect.model;
 import java.util.ArrayList;
 
 public class Cart {
+
+    User user;
     private ArrayList<CartDetail> wishItems;
     private int totalPrice;
 
-    public Cart(ArrayList<CartDetail> wishItems, int totalPrice) {
+    public Cart(User user, ArrayList<CartDetail> wishItems, int totalPrice) {
+        this.user = user;
         this.wishItems = wishItems;
         this.totalPrice = totalPrice;
+    }
+
+    public Cart() {
+
     }
 
     public ArrayList<CartDetail> getWishItems() {
@@ -25,5 +32,13 @@ public class Cart {
 
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

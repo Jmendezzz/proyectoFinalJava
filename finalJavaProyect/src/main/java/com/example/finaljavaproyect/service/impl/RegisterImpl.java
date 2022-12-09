@@ -19,9 +19,11 @@ public class RegisterImpl implements RegisterService {
         registerValidation.verifyPasswords(password,passwordConfirmed);
         registerValidation.verifyIdInput(id);
         registerValidation.verifyCellphoneNumberInput(cellphoneNumber);
+        registerValidation.verifyEmailRepeated(email, marketcol.getUserService().getUsers());
+        registerValidation.verifyIdRepeated(id,marketcol.getUserService().getUsers());
 
 
-         marketcol.getUserService().addUser(
+        marketcol.getUserService().addUser(
                  new User(name,email,id,cellphoneNumber,new UserCredentials(email,password))
          );
 

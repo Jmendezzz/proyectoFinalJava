@@ -18,4 +18,41 @@
     -fx-text-fill: #2f3539;
     -fx-text-fill: white;
 }
+.choice-box{
+   -fx-border-color : lightgray;
+}
 
+.sale-button{
+    -fx-background-color : green;
+    -fx-text-fill: white;
+
+}
+.sale-button:hover{
+    -fx-cursor:hand;
+    -fx-background-color: #025218;
+    -fx-font-weight: 900;
+}
+.delete-button{
+    -fx-background-color : red;
+    -fx-text-fill: white;
+    -fx-cursor:hand;
+
+
+}
+.edit-button{
+    -fx-background-color :  #23272b;
+    -fx-text-fill: white;
+       -fx-cursor:hand;
+}
+.edit-button:hover{
+    -fx-background-color:white;
+        -fx-text-fill: black;
+}
+.delete-button:hover{
+    -fx-background-color : #61030f;
+    -fx-text-fill: white;
+    -fx-cursor:hand;
+
+
+
+}
